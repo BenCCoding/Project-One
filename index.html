@@ -4,23 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>RPS</title>
+  <title>Black Jack</title>
   <link rel="stylesheet" href="css/main.css">
   <script defer src="js/main.js"></script>
 </head>
 <body>
-  <h1>ROCK PAPER SCISSORS</h1>
-  <main>
-    <h2>PLAYER</h2>
-    <h2>TIES</h2>
-    <h2>COMPUTER</h2>
-    <h1 id="p-score"></h1>
-    <h1 id="t-score"></h1>
-    <h1 id="c-score"></h1>
-    <div id="p-result"><img></div>
-    <div id="countdown"></div>
-    <div id="c-result"><img></div>
-    <button>Rock, Paper, Scissors... Go!</button>
-  </main>
+	<h1>Black Jack</h1>
+
+	<div id="buttons" class="hand" >
+		<button onclick="dealCards();">Deal</button>
+		<br/>
+		<button onclick="drawCard('playerCards', 'playerScore', 'result');">Player Draw</button>
+		<button onclick="drawCard('dealerCards', 'dealerScore', 'result');">Dealer Draw</button>
+		<br/>
+		<button onclick="victory('result','holdButton');">Hold</button> <!--Result is an id-->
+		<button onClick="window.location.reload();">Reset</button>; <!--Refresh Page-->
+		<!-- <button onclick="testFunction();"> Test </button> -->
+	</div>
+	<main>
+	<div id="PlayerDiv" class="hand" >
+		<h2>PLAYER</h2>
+		<div id="playerScore">
+			<p>total: 0</p>
+		</div>
+		<div id="playerCards" >
+			<p>This is where the players cards are</p>
+		</div>
+	</div>
+	<div id="spacer1"> <p></p></div>
+	<div id="HandDiv" class="hand" >
+		<h2>The Results</h2>
+		<div id="result">
+			<p></p>
+		</div>
+	</div>
+	<div id="spacer2"> <p></p></div>
+	<div id="DealerDiv" class="hand" >
+		<h2>DEALER</h2>
+		<div id="dealerScore">
+			<p>total: 0</p>
+		</div>
+		<div id="dealerCards">
+			<p>This is where the dealer cards are</p>
+		</div>
+	</div>
+	<div id="spacer3"> <p></p></div>
+	<!--
+  <div id="diagnosticTest" class="hand" > 
+		<p id="diagPara">I'm Diagnosing this</p>
+		<br/>
+	</div>
+-->
+	</main>
 </body>
 </html>
