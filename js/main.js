@@ -159,7 +159,7 @@ function victory(id,whoCalled){
   let finalResult = document.getElementById(id);
   let message = "";
   //Checks who wins when they press the 'Hold' button
-if (whoCalled == "holdButton"){
+  if (whoCalled == "holdButton"){
   if (playerScore > dealerScore) {
   //Player wins
   message = "<p> Player Wins </p>";
@@ -170,7 +170,7 @@ if (whoCalled == "holdButton"){
   // No one wins
   message = "<p> No one wins </p>";
   }
-} else {
+  } else {
   if (playerScore > 21) {
     message = "<p> Player Busted! You Lose!</p>";
   } else if (dealerScore > 21) {
@@ -185,6 +185,6 @@ if (whoCalled == "holdButton"){
     // No one wins
     message = "<p> No one wins </p>";
     }
-}
+  }
   finalResult.innerHTML = message;  
 } // end of function victory (id)
