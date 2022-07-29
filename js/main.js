@@ -1,12 +1,19 @@
-/*----- constants -----*/
+/*-----  
+The following variables are declared outside of any function
+so that they can be referenced by the next function used.
+-----*/
 const suits = ["spades/spades-", "clubs/clubs-", "diamonds/diamonds-", "hearts/hearts-"];
 const ranks = ["02", "03", "04", "05", "06", "07", "08", "09", "10", "J", "Q", "K", "A"];
 const rchar = "r";
 let deckShuffle = [];
-
 let playerScore = 0;
 let dealerScore = 0;
-
+/* 
+buildMasterDeck function uses every memeber deck to generate a
+structured object that has a face component and a value component
+the value of the face will be used to choose up a suit and a rank
+because the images are named that way.
+*/
 function buildMasterDeck() {
 	const deck = [];
 	let thisValue = "";
@@ -16,7 +23,6 @@ function buildMasterDeck() {
   for (let sdx = 0; sdx < suits.length; sdx++) {
   	for (let rdx = 0; rdx < ranks.length; rdx++) {
 		thisValue = Number(ranks[rdx]) || (ranks[rdx] === 'A' ? 11 : 10);
-    //Changed
 
 		tmp = ranks[rdx].replace("0","");
 
@@ -35,21 +41,10 @@ function buildMasterDeck() {
 
 } // end of function buildMasterDeck()
 
-
 // Build a 'master' deck of 'card' objects used to create shuffled decks
 const masterDeck = buildMasterDeck();
-renderDeckInContainer(masterDeck, document.getElementById('master-deck-container'));
 
-/*----- app's state (variables) -----*/
-let shuffledDeck;
-
-/*----- cached element references -----*/
-const shuffledContainer = document.getElementById('shuffled-deck-container');
-
-/*----- event listeners -----*/
-document.querySelector('button').addEventListener('click', renderNewShuffledDeck);
-
-/*----- functions -----*/
+/*- Making the Deck that will be used to produce the cards in the browser -*/
 function getNewShuffledDeck() {
   // Create a copy of the masterDeck (leave masterDeck untouched!)
   const tempDeck = [...masterDeck];
@@ -63,47 +58,33 @@ function getNewShuffledDeck() {
   return newShuffledDeck;
 }
 
-function renderNewShuffledDeck() {
-  // Create a copy of the masterDeck (leave masterDeck untouched!)
-  shuffledDeck = getNewShuffledDeck();
-  renderDeckInContainer(shuffledDeck, shuffledContainer);
-}
-
-function renderDeckInContainer(deck, container) {
- // container.innerHTML = '';
-  // Let's build the cards as a string of HTML
-  let cardsHtml = '';
-  deck.forEach(function(card) {
-    cardsHtml += `<div class="card ${card.face}"></div>`;
-  });
-} // end of function renderNewShuffledDeck ()
+/* The card images, store the well known parts of a img source
+their broken up into these three parts so when I get a card.
+I can use the face value to concatinate with these strings
+In that way, I can build the correct path to the file.
+The alt = is a common way to output a string when you can't ouput a file */
 
 function drawCard (id,score,victorydiv){
 	const cardSpace = document.getElementById(id);
-  //const diagosi = document.getElementById("diagPara"); //Testing card value
   const scoreSpace = document.getElementById(score);
-	const cardImgTop = "<img width=\"10%\" src=\"images/"; // beginning of an <img src="..." alt="..." />
+	const cardImgTop = "<img class=\"card\" src=\"images/"; // beginning of an <img src="..." alt="..." />
 	const cardImgMid = ".svg\" alt=\"";
 	const cardImgLast = "\" >\n";
 	let thisCard = "";
-let thisCardFace = "";
-let thisCardValue = playerScore;
-let temp = id.replace("player", "");
-if (temp == id){
-  thisCardValue = dealerScore;
-} else {
-  thisCardValue = playerScore;
-}
+  let thisCardFace = "";
+  let thisCardValue = playerScore;
+  let temp = id.replace("player", "");
+  if (temp == id){
+    thisCardValue = dealerScore;
+  } else {
+    thisCardValue = playerScore;
+  }
 
   thisCard = deckShuffle.pop(); 
 
   thisCardFace = thisCard.face;
   thisCardValue += thisCard.value;
-/* To show what the value of the card was for bug finding
-  diagosi.innerHTML += "<br/>The Value of this card is |" 
-                       + thisCard.value.toString() + "|"
-                       + " This Card is |" + thisCardFace + "|";
-*/
+
   if (temp == id){
     dealerScore += thisCard.value;
   } else {
@@ -121,14 +102,16 @@ function dealCards (){
   const playerScoreSpace = document.getElementById("playerScore");
 	const dealerSpace = document.getElementById("dealerCards");
   const dealerScoreSpace = document.getElementById("dealerScore");
-	  let playerCards = [], dealerCards = [];
-	const cardImgTop = "<img width=\"10%\" src=\"images/"; // beginning of an <img src="..." alt="..." />
+  const initialResult = document.getElementById("result");
+	let playerCards = [], dealerCards = [];
+	const cardImgTop = "<img class=\"card\" src=\"images/"; // beginning of an <img src="..." alt="..." />
 	const cardImgMid = ".svg\" alt=\"";
 	const cardImgLast = "\" >\n";
 	let thisCard = "";
   let thisCardFace = "";
   let thisCardValue = 0;
-playerScore = dealerScore = 0;
+  initialResult.innerHTML="";
+  playerScore = dealerScore = 0;
 	deckShuffle = getNewShuffledDeck();
 //Players first cards
   thisCard = deckShuffle.pop(); 
@@ -173,12 +156,12 @@ playerScore = dealerScore = 0;
 } // end of function dealCards ()
 
 function victory(id,whoCalled){
-  
   let finalResult = document.getElementById(id);
   let message = "";
+  //Checks who wins when they press the 'Hold' button
 if (whoCalled == "holdButton"){
   if (playerScore > dealerScore) {
-    //Player wins
+  //Player wins
   message = "<p> Player Wins </p>";
   } else if (dealerScore > playerScore) {
   //Dealer wins
@@ -193,10 +176,10 @@ if (whoCalled == "holdButton"){
   } else if (dealerScore > 21) {
     message = "<p> Dealer Busted! You Win!</p>";
   }  else if (playerScore >= dealerScore) {
-    //Dealer wins
+    //Player wins when checking
     message = "<p> Player Wins </p>";
     } else if (dealerScore > playerScore) {
-    //Dealer wins
+    //Dealer wins when checking
     message = "<p> Dealer Wins </p>";
     } else {
     // No one wins

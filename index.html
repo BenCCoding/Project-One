@@ -10,51 +10,57 @@
 </head>
 <body>
 	<h1>Black Jack</h1>
-
-	<div id="buttons" class="hand" >
-		<button onclick="dealCards();">Deal</button>
-		<br/>
-		<button onclick="drawCard('playerCards', 'playerScore', 'result');">Player Draw</button>
-		<button onclick="drawCard('dealerCards', 'dealerScore', 'result');">Dealer Draw</button>
-		<br/>
-		<button onclick="victory('result','holdButton');">Hold</button> <!--Result is an id-->
-		<button onClick="window.location.reload();">Reset</button>; <!--Refresh Page-->
-		<!-- <button onclick="testFunction();"> Test </button> -->
-	</div>
 	<main>
-	<div id="PlayerDiv" class="hand" >
+	<table class="cardTable">
+		<tr>
+		<td class="cardCell">
+		<div id="PlayerDiv">
 		<h2>PLAYER</h2>
 		<div id="playerScore">
-			<p>total: 0</p>
+			<p>Total: 0</p>
 		</div>
 		<div id="playerCards" >
-			<p>This is where the players cards are</p>
-		</div>
-	</div>
-	<div id="spacer1"> <p></p></div>
-	<div id="HandDiv" class="hand" >
-		<h2>The Results</h2>
-		<div id="result">
 			<p></p>
 		</div>
 	</div>
+	</td>
+	<td class="buttonCell">	
+		<div id="HandDiv">
+		<p class="resultText">The Results</p>
+		<div id="result">
+			<p></p>
+		</div>
+	</div></td>
+	<td class="cardCell">
 	<div id="spacer2"> <p></p></div>
-	<div id="DealerDiv" class="hand" >
+	<div id="DealerDiv">
 		<h2>DEALER</h2>
 		<div id="dealerScore">
-			<p>total: 0</p>
+			<p>Total: 0</p>
 		</div>
 		<div id="dealerCards">
-			<p>This is where the dealer cards are</p>
+			<p></p>
 		</div>
 	</div>
-	<div id="spacer3"> <p></p></div>
-	<!--
-  <div id="diagnosticTest" class="hand" > 
-		<p id="diagPara">I'm Diagnosing this</p>
-		<br/>
+	</td>
+	</tr>
+	<tr>
+		<td class="cardCell">
+			<button onclick="drawCard('playerCards', 'playerScore', 'result');">Player Draw</button>
+		</td>
+		<td class="buttonCell">
+			<button onclick="dealCards();">Deal</button>
+			<br/>
+			<button onclick="victory('result','holdButton');">Hold</button> <!--Result is an id-->
+		</td>
+		<td class="cardCell">
+			<button onclick="drawCard('dealerCards', 'dealerScore', 'result');">Dealer Draw</button>
+		</td>
+	</tr>
+	</table>
+	<div class="resetDiv gradient">			
+		<button class="resetButton" onClick="window.location.reload();">New Game</button>; <!--Refresh Page-->
 	</div>
--->
 	</main>
 </body>
 </html>
