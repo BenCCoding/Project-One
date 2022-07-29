@@ -1,7 +1,7 @@
 # Blackjack:
 * This is a simple browser game of blackjack that was develoved to play
 a simple game of beating the dealer while not going over 21.
-*Black Jack is a simple card game where you try to have a higher total than the dealer. Getting 21 means Blackjack which usually means the game goes to the hand that has 21 unless it's a tie, while going over 21 means that the hand has overdrawn and losses the hand.
+* Black Jack is a simple card game where you try to have a higher total than the dealer. Getting 21 means Blackjack which usually means the game goes to the hand that has 21 unless it's a tie, while going over 21 means that the hand has overdrawn and losses the hand.
 
 # How to play Blackjack:
 The browser has five buttons to choose from to play the game at your pace or have fun to mess around with. 
