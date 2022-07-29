@@ -65,12 +65,12 @@ In that way, I can build the correct path to the file.
 The alt = is a common way to output a string when you can't ouput a file */
 
 function drawCard (id,score,victorydiv){
-	const cardSpace = document.getElementById(id);
+  const cardSpace = document.getElementById(id);
   const scoreSpace = document.getElementById(score);
-	const cardImgTop = "<img class=\"card\" src=\"images/"; // beginning of an <img src="..." alt="..." />
-	const cardImgMid = ".svg\" alt=\"";
-	const cardImgLast = "\" >\n";
-	let thisCard = "";
+  const cardImgTop = "<img class=\"card\" src=\"images/"; // beginning of an <img src="..." alt="..." />
+  const cardImgMid = ".svg\" alt=\"";
+  const cardImgLast = "\" >\n";
+  let thisCard = "";
   let thisCardFace = "";
   let thisCardValue = playerScore;
   let temp = id.replace("player", "");
@@ -99,20 +99,20 @@ victory(victorydiv,"drawButtonCard");
 
 function dealCards (){
 	const playerSpace = document.getElementById("playerCards");
-  const playerScoreSpace = document.getElementById("playerScore");
+  	const playerScoreSpace = document.getElementById("playerScore");
 	const dealerSpace = document.getElementById("dealerCards");
-  const dealerScoreSpace = document.getElementById("dealerScore");
-  const initialResult = document.getElementById("result");
+  	const dealerScoreSpace = document.getElementById("dealerScore");
+  	const initialResult = document.getElementById("result");
 	let playerCards = [], dealerCards = [];
 	const cardImgTop = "<img class=\"card\" src=\"images/"; // beginning of an <img src="..." alt="..." />
 	const cardImgMid = ".svg\" alt=\"";
 	const cardImgLast = "\" >\n";
 	let thisCard = "";
-  let thisCardFace = "";
-  let thisCardValue = 0;
-  initialResult.innerHTML="";
-  playerScore = dealerScore = 0;
-	deckShuffle = getNewShuffledDeck();
+  	let thisCardFace = "";
+  	let thisCardValue = 0;
+  	initialResult.innerHTML="";
+ playerScore = dealerScore = 0;
+ deckShuffle = getNewShuffledDeck();
 //Players first cards
   thisCard = deckShuffle.pop(); 
 
