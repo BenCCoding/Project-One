@@ -9,6 +9,9 @@ The browser has five buttons to choose from to play the game at your pace or hav
 * Player/Dealer Draw - Both buttons will allow an extra card to be pulled from either side when you click on the respective button and the game will notify you what the current state of the match is after the first pull. You can pull more cards and as long as it isn't over 21, the player can still win the match.
 * New Game - A reset of the board to delete the cards in the table and start the game before the deal button was pressed.
 
+Deployed link:
+https://benccodingblackjack.netlify.app/
+
 # What it looks like
 ![LoadingBlackJack](https://i.imgur.com/SCKwPHl.png)
 ![DealBlackJack](https://i.imgur.com/NLjZIrx.png)
