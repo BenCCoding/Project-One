@@ -60,7 +60,7 @@ function getNewShuffledDeck() {
 
 /* The card images, store the well known parts of a img source
 their broken up into these three parts so when I get a card.
-I can use the face value to concatinate with these strings
+I can use the face value to link with these strings
 In that way, I can build the correct path to the file.
 The alt = is a common way to output a string when you can't ouput a file */
 
